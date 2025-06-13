@@ -1,6 +1,8 @@
 :root {
   --bg-color: #ffffff;
   --text-color: #000000;
+  --set-color: #bdbdbd;
+  --setbar-color: #727171;
 }
 
 :root Toolbar
@@ -11,10 +13,11 @@
 [data-theme='dark'] {
   --bg-color: #121212;
   --text-color: #ffffff;
+  --set-color: #f5f5f5;
 }
 
 body {
   background-color: var(--bg-color);
   color: var(--text-color);
-  transition: background 0.2s ease, color 0.2s ease;
+  transition: background 0.1s ease, color 0.1s ease;
 }
