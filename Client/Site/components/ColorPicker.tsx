@@ -18,7 +18,7 @@ const ColorPicker: React.FC<ColorPickerProp> = ({func, label, currentColor}) =>
         }, [color]);
 
         return(
-            <Box sx={{padding: '1rem', display:"flex", alignItems:"center",justifyContent:"center",alignContent:'center',justifyItems:"center", gap:1, minHeight:0}}>
+            <Box sx={{padding: '1rem', display:"flex",alignItems:"center",justifyContent:"center",alignContent:'center',justifyItems:"center", gap:1, minHeight:0}}>
                 <label htmlFor="color-input" style={{marginRight: '0.5rem', color:"var(--text-color)", fontWeight:"bold"}}>
                     {label}
                 </label>

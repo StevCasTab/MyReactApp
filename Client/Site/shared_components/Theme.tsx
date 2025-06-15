@@ -9,8 +9,9 @@ interface ThemeContextType {
   theme: string;
   setCustomBackColor: (color: string) => void;
   setCustomTextColor: (color: string) => void;
-  toggleTheme: () => void;
+  toggleTheme: (boolVal: boolean) => void;
   customBgC: string;
+  customTxtC: string;
 }
 
 //Context includes Default Values
@@ -20,6 +21,7 @@ export const Theme = createContext<ThemeContextType>({
   setCustomTextColor: () => {},
   toggleTheme: () => {},
   customBgC: "",
+  customTxtC: ""
 });
 
 //children prop is defined as a ReactNode
@@ -27,12 +29,19 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
   //Returns localstorage value
   const [theme, setTheme] = useState<"light" | "dark" | "custom">(() => {
     const savedTheme = localStorage.getItem("theme");
+    console.log('loading from storage');
     if (savedTheme === "custom") {
       return "custom";
     } else {
       return savedTheme === "dark" ? "dark" : "light";
     }
   });
+
+  const [lasttheme, setLastTheme] = useState<"light" | "dark">(() => {
+    const savedTheme = localStorage.getItem("theme");
+      return savedTheme === "dark" ? "dark" : "light";
+  });
+
 
   //Update value in localstorage when theme is updated
   useEffect(() => {
@@ -41,6 +50,11 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
     } else {
       document.documentElement.setAttribute("data-theme", theme);
       localStorage.setItem("theme", theme);
+
+      if(theme === 'light' || theme === 'dark')
+        {
+          setLastTheme(theme);
+        }
     }
   }, [theme]);
 
@@ -50,12 +64,14 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
       : "#121212"
   );
   const [customTxtC, setCustomTxtC] = useState<string>(
-    localStorage.getItem("customTxtC") ?? "var(--text-color)"
+    localStorage.getItem("customTxtC") ?? theme === "light"
+      ? "#121212"
+      : "#ffffff"
   );
 
   const setCustomBackColor = (color: string) => {
-    if ((customBgC === color || color === "") && theme === "custom") {
-      toggleTheme();
+    if (color === "" && theme === "custom") {
+      setCustomBgC("");
     } else {
       setTheme("custom");
       document.documentElement.style.setProperty("--bg-color", color);
@@ -63,28 +79,60 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
-  const setCustomTextColor = (color: string) => {
-    if (color === "") {
-      setTheme("light");
+  const setCustomTextColor = (color : string) => {
+    if (color === "" && theme === "custom") {
+      setCustomTxtC("");
     } else {
+      setTheme("custom");
+      document.documentElement.style.setProperty("--text-color", color);
       setCustomTxtC(color);
     }
   };
 
   //callback function to set the theme
-  const toggleTheme = () => {
-    if (theme === "custom") {
-      setTheme("light");
-      setCustomBgC("");
-      setCustomTxtC("");
-      document.documentElement.style.setProperty("--bg-color", "");
-    } else {
-      setTheme((prev) => (prev === "light" ? "dark" : "light"));
-    }
-  };
+  // const toggleTheme = (boolVal?: boolean) => {
+  //   if (theme === "custom") {
+  //     if(boolVal === true)
+  //       {
+  //           setTheme("dark");
+  //       }else{
+  //     setTheme("light");
+  //       }
+  //     setCustomBgC("");
+  //     setCustomTxtC("");
+  //     document.documentElement.style.setProperty("--bg-color", "");
+  //   } else {
+  //     setTheme((prev) => (prev === "light" ? "dark" : "light"));
+  //   }
+  // };
 
-  const muiPaletteMode: "light" | "dark" | undefined =
-    theme === "light" ? "light" : theme === "dark" ? "dark" : undefined;
+  const toggleTheme = (boolVal? : boolean) =>
+  {
+    console.log('Theme - ' + boolVal);
+
+    const targetTheme = boolVal !== undefined ? (boolVal ? "dark" : "light") : undefined;
+    const isCustom = theme === "custom";
+    const nextTheme = lasttheme === "light" ? "dark" : "light";
+    const newTextColor = (isCustom ? lasttheme : targetTheme ?? nextTheme) === "dark" ? "#ffffff" : "#121212";
+
+    console.log('To set - ' + (targetTheme ?? nextTheme));
+
+    setCustomTextColor(newTextColor);
+    setCustomBackColor('');
+    document.documentElement.style.setProperty("--bg-color", '');
+    document.documentElement.style.setProperty("--text-color", '');
+
+    if(isCustom || targetTheme === undefined)
+      {
+        setTheme(nextTheme);
+      }
+      else{
+        setTheme(targetTheme);
+      }
+  }
+
+  const muiPaletteMode: "light" | "dark" = lasttheme === 'light' ? 'light' : 'dark';
+
 
   const muiTheme = React.useMemo(
     () =>
@@ -100,8 +148,7 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
                   default: "#121212",
                 },
               }
-            : muiPaletteMode === "dark"
-            ? {
+            : {
                 primary: {
                   main: "#90caf9", // lighter blue for dark theme
                 },
@@ -109,17 +156,10 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
                   default: "black",
                 },
               }
-            : {
-                primary: {
-                  main: "#1976d2", // blue for light theme
-                },
-                background: {
-                  default: "#121212",
-                },
-              }),
+            ),
         },
       }),
-    [theme]
+    [muiPaletteMode]
   );
 
   //Return Theme Provider with values and function to toggle between them
@@ -131,6 +171,7 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
         setCustomBackColor,
         setCustomTextColor,
         customBgC,
+        customTxtC,
       }}
     >
       <MuiThemeProvider theme={muiTheme}>{children}</MuiThemeProvider>

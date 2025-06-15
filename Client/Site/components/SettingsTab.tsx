@@ -1,20 +1,31 @@
 import { useTheme } from "../shared_components/Theme";
-import ColorPicker from "./ColorPicker";
-import { Box, Collapse, Divider, Grow, Paper, Typography } from "@mui/material";
-import { grey } from "@mui/material/colors";
+import { Box, Divider, Grow, Paper, Typography } from "@mui/material";
+import Setting from "../components/Setting";
+import { useEffect, useState } from "react";
 
 interface SettingsTabProps {
   openSetBar: boolean;
+
 }
 
 const SettingsTab: React.FC<SettingsTabProps> = ({ openSetBar }) => {
-  const { toggleTheme, setCustomBackColor, customBgC } = useTheme();
+  const {theme, toggleTheme, setCustomBackColor, setCustomTextColor, customBgC, customTxtC} = useTheme();
+  const [currentTheme, setCurrentTheme] = useState<boolean>();
+  const customBgColor = theme === 'light' ? '#ffffff' : theme === 'dark' ? '#121212' : customBgC;
+  const customTxtColor = theme === 'light' ? '#121212' : theme === 'dark' ? '#ffffff' : customTxtC;
+  
+  useEffect(() => {
+    if(theme !== 'custom')
+      {
+        setCurrentTheme(theme === 'dark');
+      }
+  }, [theme]);
 
   return (
     <Grow
       in={openSetBar}
       timeout="auto"
-      style={{ overflow: "hidden", border: "1px solid red" }}
+      style={{ overflow: "hidden", border: "1px solid black"}}
     >
       <Paper
         sx={{
@@ -26,7 +37,7 @@ const SettingsTab: React.FC<SettingsTabProps> = ({ openSetBar }) => {
         }}
         elevation={3}
       >
-        <Box sx={{ backgroundColor: "var(--setbar-color)" }}>
+         <Box sx={{ backgroundColor: currentTheme ? "#121212" : "#6fb2f5", opacity:0.8 }}>
           <Typography
             variant="h6"
             sx={{
@@ -35,6 +46,7 @@ const SettingsTab: React.FC<SettingsTabProps> = ({ openSetBar }) => {
               justifyContent: "center",
               alignItems: "center",
               justifyItems: "center",
+              color: "var(--text-color)"
             }}
             gutterBottom
           >
@@ -44,13 +56,10 @@ const SettingsTab: React.FC<SettingsTabProps> = ({ openSetBar }) => {
             sx={{ borderColor: "black", border: "1px solid black" }}
           ></Divider>
         </Box>
-        <ColorPicker
-          func={(color: string) => {
-            setCustomBackColor(color);
-          }}
-          currentColor={customBgC}
-          label="Custom Background"
-        ></ColorPicker>
+
+        <Setting variant="Color" label="Custom Background" stringFunc={setCustomBackColor} stringVal={customBgColor}></Setting>
+        <Setting variant="Color" label="Custom Font Colour" stringFunc={setCustomTextColor} stringVal={customTxtColor}></Setting>
+        <Setting variant="Switch" label="Dark Theme" boolFunc={toggleTheme} boolVal={currentTheme}></Setting>
       </Paper>
     </Grow>
   );
