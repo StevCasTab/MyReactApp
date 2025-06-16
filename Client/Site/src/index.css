@@ -5,11 +5,6 @@
   --setbar-color: #727171;
 }
 
-:root Toolbar
-{
-  background-color: white;
-}
-
 [data-theme='dark'] {
   --bg-color: #121212;
   --text-color: #ffffff;

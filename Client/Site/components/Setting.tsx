@@ -12,7 +12,6 @@ interface SettingProp {
   boolFunc?: (bVal: boolean) => void;
   stringFunc?: (sVal: string) => void;
   numbFunc?: (nVal: number) => void;
-  disabledFunc?: () => void;
 }
 
 const Setting: React.FC<SettingProp> = ({
@@ -27,7 +26,6 @@ const Setting: React.FC<SettingProp> = ({
   boolFunc,
   stringFunc,
   numbFunc,
-  disabledFunc,
 }) => {
   const [stringValue, setStringValue] = useState<string>("");
   const [boolValue, setBooleanValue] = useState<boolean>(false);
@@ -75,36 +73,6 @@ useEffect(() => {
               setNewbool(e.target.checked);
           }}></Switch>
         );
-        // if (disableSet) {
-        //   return (
-        //     <Button
-        //       onClick={() => {
-        //         if (disableSet) {
-        //           disableSet = !disableSet;
-        //           if (disabledFunc) {
-        //             disabledFunc();
-        //           }
-        //         }
-        //       }}
-        //     >
-        //       <Switch
-        //         checked={boolValue}
-        //         disabled={disableSet}
-        //       ></Switch>
-        //     </Button>
-        //   );
-        // }
-        // else{
-        //     return(
-        //     <Switch
-        //         checked={boolValue}
-        //         onChange={(e) => {
-        //           setNewbool(e.target.checked);
-        //         }}
-        //         disabled={disableSet}
-        //       ></Switch>
-        //     );
-        // };
       case "Text":
         return (
           <InputBase

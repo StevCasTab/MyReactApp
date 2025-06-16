@@ -9,10 +9,8 @@ interface SettingsTabProps {
 }
 
 const SettingsTab: React.FC<SettingsTabProps> = ({ openSetBar }) => {
-  const {theme, toggleTheme, setCustomBackColor, setCustomTextColor, customBgC, customTxtC} = useTheme();
-  const [currentTheme, setCurrentTheme] = useState<boolean>();
-  const customBgColor = theme === 'light' ? '#ffffff' : theme === 'dark' ? '#121212' : customBgC;
-  const customTxtColor = theme === 'light' ? '#121212' : theme === 'dark' ? '#ffffff' : customTxtC;
+  const {theme, toggleTheme, setBackColor, setTextColor, currentBgC, currentTxtC, lastTheme} = useTheme();
+  const [currentTheme, setCurrentTheme] = useState<boolean>(lastTheme === 'dark');
   
   useEffect(() => {
     if(theme !== 'custom')
@@ -57,8 +55,8 @@ const SettingsTab: React.FC<SettingsTabProps> = ({ openSetBar }) => {
           ></Divider>
         </Box>
 
-        <Setting variant="Color" label="Custom Background" stringFunc={setCustomBackColor} stringVal={customBgColor}></Setting>
-        <Setting variant="Color" label="Custom Font Colour" stringFunc={setCustomTextColor} stringVal={customTxtColor}></Setting>
+        <Setting variant="Color" label="Custom Background" stringFunc={setBackColor} stringVal={currentBgC}></Setting>
+        <Setting variant="Color" label="Custom Font Colour" stringFunc={setTextColor} stringVal={currentTxtC}></Setting>
         <Setting variant="Switch" label="Dark Theme" boolFunc={toggleTheme} boolVal={currentTheme}></Setting>
       </Paper>
     </Grow>
