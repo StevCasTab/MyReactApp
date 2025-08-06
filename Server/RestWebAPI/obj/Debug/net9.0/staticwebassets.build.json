@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "dXKI1JoRdyD5ei6lyOXalFUjc4+HyUyHxPQex9XWkA8=",
+  "Source": "RestWebAPI",
+  "BasePath": "_content/RestWebAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

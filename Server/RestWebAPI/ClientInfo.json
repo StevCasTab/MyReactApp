@@ -1,0 +1,20 @@
+[
+    {
+        "id" : 1,
+        "FirstName" : "John",
+        "LastName" : "Doe",
+        "Email" : "johnd56@gmail.com",
+        "Age" : 46,
+        "Locality" : "Mosta",
+        "Country" : "Malta"
+    },
+    {
+        "id" : 2,
+        "FirstName" : "Dexter",
+        "LastName" : "Einstein",
+        "Email": "deinstein872@outlook.com",
+        "Age" : 62,
+        "Locality" : "Amsterdam",
+        "Country" : "Netherlands"
+    }
+]

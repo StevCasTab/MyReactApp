@@ -1,0 +1,6 @@
+@RestWebAPI_HostAddress = http://localhost:5063
+
+GET {{RestWebAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
