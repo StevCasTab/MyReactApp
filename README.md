@@ -1,7 +1,7 @@
 # MyReactApp
 This app was created as a passion project to learn and experiment utilizing Typescript & React along with components from MUI.
 
-####  >:bangbang:	 Disclaimer  :bangbang:	
+###  ! Disclaimer !
 No information displayed on this app is real. All data was made-up and do not refer to any real people.
 
 ## Light Theme
