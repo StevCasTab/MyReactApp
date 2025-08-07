@@ -10,7 +10,7 @@ const Appbar: React.FC<AppbarProps> = ({openSettings}) => {
     return(
         <AppBar position="static">
             <Toolbar>
-                <Typography variant="h6" component="div" sx={{flexGrow:1, color:"var(--text-color)", fontWeight:"bold"}}>
+                <Typography variant="h6" component="div" sx={{flexGrow:1, color:"var(--text-color)", fontWeight:"bold", textAlign:"center"}}>
                     My React App
                 </Typography>
                 <IconButton onClick={openSettings}>

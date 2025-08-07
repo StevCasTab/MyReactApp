@@ -1,5 +1,6 @@
 import { Box, InputBase, Switch } from "@mui/material";
 import { useEffect, useState } from "react";
+
 interface SettingProp {
   disableSet?: boolean;
   variant: "Switch" | "Text" | "Number" | "Color" | "Button";

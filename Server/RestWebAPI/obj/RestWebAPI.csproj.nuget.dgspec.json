@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\kevma\\Desktop\\Sitey\\Server\\RestWebAPI\\RestWebAPI.csproj": {}
+    "C:\\Users\\kevma\\Desktop\\Sitey\\server\\RestWebAPI\\RestWebAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\kevma\\Desktop\\Sitey\\Server\\RestWebAPI\\RestWebAPI.csproj": {
+    "C:\\Users\\kevma\\Desktop\\Sitey\\server\\RestWebAPI\\RestWebAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\kevma\\Desktop\\Sitey\\Server\\RestWebAPI\\RestWebAPI.csproj",
+        "projectUniqueName": "C:\\Users\\kevma\\Desktop\\Sitey\\server\\RestWebAPI\\RestWebAPI.csproj",
         "projectName": "RestWebAPI",
-        "projectPath": "C:\\Users\\kevma\\Desktop\\Sitey\\Server\\RestWebAPI\\RestWebAPI.csproj",
+        "projectPath": "C:\\Users\\kevma\\Desktop\\Sitey\\server\\RestWebAPI\\RestWebAPI.csproj",
         "packagesPath": "C:\\Users\\kevma\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\kevma\\Desktop\\Sitey\\Server\\RestWebAPI\\obj\\",
+        "outputPath": "C:\\Users\\kevma\\Desktop\\Sitey\\server\\RestWebAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\kevma\\AppData\\Roaming\\NuGet\\NuGet.Config"

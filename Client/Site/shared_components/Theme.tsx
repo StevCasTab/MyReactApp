@@ -37,6 +37,8 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
     } else {
       return savedTheme === "dark" ? "dark" : "light"; //If the theme was not saved as custom, set it to reflect the light/dark themes
     }
+    // localStorage.setItem("theme", "light");
+    // return "light";
   });
 
   //To remember last theme that was chosen to track last theme before choosing a custom theme
@@ -195,13 +197,18 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
               }
             : {                          //Dark Theme
                 primary: {
-                  main: "#90caf9", // lighter blue for dark theme
+                  main: "#2e2d2dff", // lighter blue for dark theme
                 },
                 background: {
-                  default: "black",
+                  default: "#121212",
                 },
               }),
         },
+        // components: {
+        //   MuiDataGrid: {
+
+        //   }
+        // }
       }),
     [muiPaletteMode]
   );

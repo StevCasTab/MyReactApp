@@ -35,7 +35,7 @@ const SettingsTab: React.FC<SettingsTabProps> = ({ openSetBar }) => {
         }}
         elevation={3}
       >
-         <Box sx={{ backgroundColor: currentTheme ? "#121212" : "#6fb2f5", opacity:0.8 }}>
+         <Box sx={{ backgroundColor: currentTheme ? "#121212" : "#6fb2f5", opacity:0.8 , width: "100%", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center"}}>
           <Typography
             variant="h6"
             sx={{
@@ -50,10 +50,15 @@ const SettingsTab: React.FC<SettingsTabProps> = ({ openSetBar }) => {
           >
             Settings
           </Typography>
-          <Divider
+          {/* <Divider
+            sx={{ borderColor: "black", border: "1px solid black" }}
+          ></Divider> */}
+        </Box>
+        
+        <Divider
             sx={{ borderColor: "black", border: "1px solid black" }}
           ></Divider>
-        </Box>
+
 
         <Setting variant="Color" label="Custom Background" stringFunc={setBackColor} stringVal={currentBgC}></Setting>
         <Setting variant="Color" label="Custom Font Colour" stringFunc={setTextColor} stringVal={currentTxtC}></Setting>
