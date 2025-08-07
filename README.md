@@ -2,7 +2,8 @@
 This app was created as a passion project to learn and experiment utilizing Typescript & React along with components from MUI.
 
 ## Light Theme
-![image](https://github.com/user-attachments/assets/5ad119b9-0705-4fbc-9507-cb85c7d9ab9c)
+<img width="1659" height="830" alt="image" src="https://github.com/user-attachments/assets/923cb151-4e3a-47e6-8cd8-6e75316b7a83" />
 
 ## Dark Theme
-![image](https://github.com/user-attachments/assets/45a14285-02a3-4d0a-89e6-7a5e936abadc)
+<img width="1661" height="827" alt="image" src="https://github.com/user-attachments/assets/c8eb7ffa-7f0d-4637-b0c4-01f7b6d883a7" />
+
