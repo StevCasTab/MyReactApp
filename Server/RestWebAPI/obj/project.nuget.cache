@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Q/+6AspsgFE=",
+  "dgSpecHash": "w9yJVvoRr3c=",
   "success": true,
-  "projectFilePath": "C:\\Users\\kevma\\Desktop\\Sitey\\server\\RestWebAPI\\RestWebAPI.csproj",
+  "projectFilePath": "C:\\Users\\kevma\\Desktop\\Sitey\\Server\\restwebapi\\RestWebAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\kevma\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\kevma\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

@@ -1,7 +1,8 @@
 
 import Appbar from "../shared_components/Appbar";
 import SettingsTab from "../components/SettingsTab";
-import { useTheme} from "@mui/material/styles";
+import { useTheme as UseMuiTheme} from "@mui/material/styles";
+import { useTheme } from "../shared_components/Theme";
 
 import { ClientInfoModel } from "../Models/ClientInfoModel";
 
@@ -18,7 +19,8 @@ const client = axios.create({
 
 
 function App() {
-  const muiTheme = useTheme();
+  const muiTheme = UseMuiTheme();
+  const {lastTheme} = useTheme();
   const [loading, setLoading] = useState<boolean>(true);
   const [setBar, openSetBar] = useState<boolean>(false);
   const [clients, setClients] = useState<ClientInfoModel[]>([]);
@@ -80,7 +82,7 @@ function App() {
         <div
           className={transitionClassName}
           style={{
-            backgroundColor: muiTheme.palette.primary.main,
+            backgroundColor: lastTheme == 'light' ? '#ffffff' :  muiTheme.palette.primary.main,
             width: "100%",
             height: "100%",
             display: "flex",
